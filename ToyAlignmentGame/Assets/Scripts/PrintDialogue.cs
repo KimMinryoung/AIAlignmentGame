@@ -20,4 +20,8 @@ public class PrintDialogue : MonoBehaviour
     {
         
     }
+
+    public void PrintLine(string text){
+        textMeshPro.text = text;
+    }
 }

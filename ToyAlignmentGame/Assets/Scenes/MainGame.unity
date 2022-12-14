@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 8037768}
   - component: {fileID: 8037767}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,10 +216,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 342580036}
-  - component: {fileID: 342580035}
   - component: {fileID: 342580034}
+  - component: {fileID: 342580037}
   m_Layer: 0
-  m_Name: GameController
+  m_Name: SceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,18 +239,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1097628828}
   sceneName: MainGame
---- !u!114 &342580035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342580033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ae6e1daf3ec77440b677e4eced57319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &342580036
 Transform:
   m_ObjectHideFlags: 0
@@ -266,6 +254,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &342580037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342580033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76eff6eadbea17e45a5541b2523cb3cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePrinter: {fileID: 763210786}
 --- !u!1 &763210782
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,7 +724,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
