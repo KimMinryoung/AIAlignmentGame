@@ -32,7 +32,6 @@ public class DialogueManager : MonoBehaviour
         // write the current line and increment the line index
         if (currentLine < dialogueLines.Length){
             dialoguePrinter.PrintLine(dialogueLines[currentLine]);
-            Debug.Log(dialogueLines[currentLine]);
             currentLine++;
         }
     }
@@ -45,7 +44,7 @@ public class DialogueManager : MonoBehaviour
     
     void Update(){
 		//if (DuringDialogue ()) {
-			if ((Input.GetKeyUp (KeyCode.Return)) || Input.GetKeyUp (KeyCode.KeypadEnter) || Input.GetKeyUp (KeyCode.Space)) {
+			if (Input.GetMouseButtonUp(0) || Input.GetKeyUp (KeyCode.Return) || Input.GetKeyUp (KeyCode.KeypadEnter) || Input.GetKeyUp (KeyCode.Space)) {
 				ClickForNextDialogueLine ();
 			} else if (Input.GetKey (KeyCode.LeftControl) || duringSkip) {
 				frameWait++;
