@@ -10,25 +10,27 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     private Vector2 startPos;
     private Vector3 offset;
     private TargetTracker tracker;
+    private Transform parentTF;
 
     void Start()
     {
-        startPos = transform.position;
+        parentTF = transform.parent;
+        startPos = parentTF.position;
         tracker = GameObject.Find("SceneManager").GetComponent<TargetTracker>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        startPos = transform.position;
+        startPos = parentTF.position;
         Vector3 startMousePos = Camera.main.ScreenToWorldPoint(eventData.position);
-        offset = transform.position - startMousePos;
+        offset = parentTF.position - startMousePos;
     }
 
     void moveToCurPos(Vector3 curPos){
         curPos.x = Mathf.Clamp(curPos.x, DisplayManager.minX, DisplayManager.maxX);
         curPos.y = Mathf.Clamp(curPos.y, DisplayManager.minY, DisplayManager.maxY);
-        curPos.z = transform.position.z;
-        transform.position = curPos;
+        curPos.z = parentTF.position.z;
+        parentTF.position = curPos;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -65,8 +67,8 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
                         tracker.UpdateObjectTarget(this.gameObject, target);
                         updateCurTargetValue(target.name);
                         Vector3 targetPos = hit.collider.transform.position;
-                        targetPos.z= transform.position.z;
-                        transform.position = targetPos;
+                        targetPos.z= parentTF.position.z;
+                        parentTF.position = targetPos;
                     }else{
                     }
                 }
@@ -74,7 +76,7 @@ public class DragAndDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
         }
         if(!overlapped){
                 // If the sprite is not over any target, move it back to its starting position
-                transform.position = new Vector3(startPos.x, startPos.y, transform.position.z);
+                parentTF.position = new Vector3(startPos.x, startPos.y, parentTF.position.z);
         }
     }
     
